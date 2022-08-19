@@ -7,8 +7,14 @@
 * [Typescript](https://www.typescriptlang.org/)
 * [Expresss](https://expressjs.com/)
 * [PostgreSQL](https://www.postgresql.org/)
+* [Jest](https://jest.io/)
+
+
 
 ## Start the project
+### Prerequisites
+  * PostgreSQL
+  * Database already created
 
 ```bash
 # install dependencies

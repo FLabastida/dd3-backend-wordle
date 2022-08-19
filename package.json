@@ -11,10 +11,10 @@
     "husky-prepare": "husky install",
     "lint": "ts-standard --fix",
     "build": "tsc",
-    "start": "node dist/src/bin/server.js",
-    "test": "NODE_ENV=test npm run lint && jest --silent --runInBand --forceExit",
+    "start": "npm run build && node dist/src/bin/server.js",
+    "test": "set NODE_ENV=test npm run lint && jest --silent --runInBand --forceExit",
     "test:coverage": "npm run test -- --coverage",
-    "dev": "NODE_ENV=dev ts-node-dev --respawn src/bin/server.ts"
+    "dev": "set NODE_ENV=dev ts-node-dev --respawn src/bin/server.ts"
   },
   "keywords": [],
   "author": "flabastida",
