@@ -14,9 +14,9 @@ describe('TEST /game', () => {
       username: String(process.env.USERNAME_TEST),
       password: String(process.env.PASSWORD_TEST)
     }
-    const getToken = await testPostUsers(query, '/login')
+    const getToken = await testPostUsers(query, 'login')
 
-    const response = await testGetGame('/top-words', getToken.body.token)
+    const response = await testGetGame('top-words', getToken.body.token)
     await expect(response.statusCode).toBe(200)
     await expect(response.headers['content-type']).toMatch(/application\/json/)
     await expect(response.body).toHaveProperty('top_words')
@@ -26,11 +26,11 @@ describe('TEST /game', () => {
       username: String(process.env.USERNAME_TEST),
       password: String(process.env.PASSWORD_TEST)
     }
-    const getToken = await testPostUsers(query, '/login')
+    const getToken = await testPostUsers(query, 'login')
     const word: reqBodyWords = {
       user_word: 'ABCDE'
     }
-    const response = await testPostWord(word, '/word', getToken.body.token)
+    const response = await testPostWord(word, 'word', getToken.body.token)
     await expect(response.statusCode).toBe(200)
     await expect(response.headers['content-type']).toMatch(/application\/json/)
     await expect(response.body).toHaveProperty('response')

@@ -16,7 +16,7 @@ describe('TEST /users ', () => {
     await expect(response.statusCode).toBe(200)
     await expect(response.headers['content-type']).toMatch(/application\/json/)
     await expect(response.body).toHaveProperty('message', 'Successfully register')
-    const validRegister = await testPostUsers(query, '/login')
+    const validRegister = await testPostUsers(query, 'login')
     await expect(validRegister.statusCode).toBe(200)
     await expect(validRegister.headers['content-type']).toMatch(/application\/json/)
     await expect(validRegister.body).toHaveProperty('token')
@@ -27,7 +27,7 @@ describe('TEST /users ', () => {
       username: String(process.env.USERNAME_TEST),
       password: String(process.env.PASSWORD_TEST)
     }
-    const response = await testPostUsers(query, '/login')
+    const response = await testPostUsers(query, 'login')
     await expect(response.statusCode).toBe(200)
     await expect(response.headers['content-type']).toMatch(/application\/json/)
     await expect(response.body).toHaveProperty('token')
@@ -38,7 +38,7 @@ describe('TEST /users ', () => {
       username: String(process.env.USERNAME_TEST),
       password: 'wrongPassword'
     }
-    const response = await testPostUsers(query, '/login')
+    const response = await testPostUsers(query, 'login')
     await expect(response.statusCode).toBe(400)
     await expect(response.headers['content-type']).toMatch(/application\/json/)
     await expect(response.body).toHaveProperty('message', 'Wrong credentials')
@@ -48,7 +48,7 @@ describe('TEST /users ', () => {
       username: 'username',
       password: 'wrongPassword'
     }
-    const response = await testPostUsers(query, '/login')
+    const response = await testPostUsers(query, 'login')
     await expect(response.statusCode).toBe(400)
     await expect(response.headers['content-type']).toMatch(/application\/json/)
     await expect(response.body).toHaveProperty('message', 'User not found')
@@ -58,7 +58,7 @@ describe('TEST /users ', () => {
       username: String(process.env.USERNAME_TEST),
       password: String(process.env.PASSWORD_TEST)
     }
-    const getToken = await testPostUsers(query, '/login')
+    const getToken = await testPostUsers(query, 'login')
 
     const response = await testGet('top-ten', getToken.body.token)
     await expect(response.statusCode).toBe(200)
@@ -71,8 +71,8 @@ describe('TEST /users ', () => {
       username: String(process.env.USERNAME_TEST),
       password: String(process.env.PASSWORD_TEST)
     }
-    const getToken = await testPostUsers(query, '/login')
-    const response = await testGet('/stats', getToken.body.token)
+    const getToken = await testPostUsers(query, 'login')
+    const response = await testGet('stats', getToken.body.token)
     await expect(response.statusCode).toBe(200)
     await expect(response.headers['content-type']).toMatch(/application\/json/)
     await expect(response.body).toHaveProperty('user_stats')
