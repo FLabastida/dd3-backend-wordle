@@ -12,7 +12,7 @@
     "lint": "ts-standard --fix",
     "build": "tsc",
     "start": "node dist/src/bin/server.js",
-    "test": "NODE_ENV=test jest --silent",
+    "test": "NODE_ENV=test npm run lint && jest --verbose --runInBand --forceExit",
     "test:coverage": "npm run test -- --coverage",
     "dev": "NODE_ENV=dev ts-node-dev --respawn src/bin/server.ts"
   },
@@ -20,6 +20,8 @@
   "author": "flabastida",
   "license": "",
   "dependencies": {
+    "@types/jest": "^28.1.7",
+    "@types/supertest": "^2.0.12",
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

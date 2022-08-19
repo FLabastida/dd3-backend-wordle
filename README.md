@@ -1,5 +1,5 @@
 ## About
--  dev @flabastida
+-  Dev @flabastida
 -  Project wordle game backend for DD3 test
 ### Technologies
 
@@ -14,7 +14,7 @@
 # install dependencies
 $ npm i
 
-# serve production build
+# serve production build - Start game
 $ npm start
 
 # Only build
@@ -43,6 +43,53 @@ DB_PASSWORD=examplePassword
 DB_NAME=exampleDB
  ```
 
-
-
-
+ ## How to play
+ ### Register
+ * Method: POST
+ * Edpoint: /api/users/
+ * Body 
+```
+   {
+      username: username,
+      password: password
+    }
+```
+ ### Login
+ * Method: POST
+ * Edpoint: /api/users/login
+ * Body 
+```
+   {
+      username: username,
+      password: password
+    }
+```
+ * response
+ ```
+{
+  token: token,
+  message: message
+ }
+ ```
+ ### Play Game
+ * Method: POST
+ * Endpoint: /api/game/word
+ * Body 
+ ```
+{
+  user_word: 'fooba'
+ }
+ ```
+ * headers: [x-access-token]
+ ### User stats
+ * Method: GET
+ * Endpoint: /api/user/stats
+ * headers: [x-access-token] token of response in login
+ ### Top ten users
+ * Method: GET
+ * Endpoint: /api/user/top-ten
+ * headers: [x-access-token] token of response in login
+ ### Words stats
+ * Method: GET
+ * Endpoint: /api/game/top-words
+ * headers: [x-access-token] token of response in login
