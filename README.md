@@ -43,6 +43,26 @@ DB_PASSWORD=examplePassword
 DB_NAME=exampleDB
  ```
 
+ ### Set up the .env for testing and dev
+ ```bash
+ # test
+SECRET_TOKEN_TEST=secretToken
+DB_HOST_TEST=localhost
+DB_PORT_TEST=5432
+DB_USERNAME_TEST=test
+DB_PASSWORD_TEST=examplePassword
+DB_NAME_TEST=exampleDB-test
+USERNAME_TEST=user@test.dev
+PASSWORD_TEST=passwordTest
+#dev
+SECRET_TOKEN_DEV=secretToken
+DB_HOST_DEV=localhost
+DB_PORT_DEV=5432
+DB_USERNAME_DEV=test@test.dev
+DB_PASSWORD_DEV=passwordDBDev
+DB_NAME_DEV=exampleDB-dev
+ ```
+
  ## How to play
  ### Register
  * Method: POST
